@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
     res.send("Hello, World");
 });
 
-// Route to send emails
+// Route to send emails for Contact Form
 app.post('/contact',(req,res)=>{
     const { firstName, lastName, email, phone, message } = req.body;
     const mail = {
@@ -40,7 +40,7 @@ app.post('/contact',(req,res)=>{
     })
 })
 
-// Route to send emails
+// Route to send emails for Donation Form
 app.post('/donateform',(req,res)=>{
     const { name, address, postcode, email, donatedAmount, donatedDate, pledgedAmount, pledgedDate } = req.body;
     const mail = {
@@ -58,6 +58,34 @@ app.post('/donateform',(req,res)=>{
                <p>PledgedDate: ${pledgedDate}</p>`,
     };
 
+    sendMail.send(mail)
+    .then(() => {
+        res.status(200).json({status: 'Message Sent'});
+    })
+    .catch((error) => {
+        console.error(error); 
+        res.status(500).json({status:'ERROR'});
+    })
+})
+
+// Route to send emails for Booking Form
+app.post('/bookingform',(req,res)=>{
+    const { names, contactName, contactPhone, contactEmail, numberOfTickets, totalAmount, wholeTableName, totalPaid, paidDate } = req.body;
+    const mail = {
+        to: process.env.EMAIL_USER,
+        from: process.env.EMAIL_USER,
+        subject: `Quiz Booking Form from ${contactName} - Birdwood Reserve Environmental Project`,
+        text: `Names: ${names}\nAddress: ${address}\nPostcode: ${postcode}\nEmail: ${email}\nDonatedAmount: ${donatedAmount}\nDonatedDate: ${donatedDate}\nPledgedAmount: ${pledgedAmount}\nPledgedDate: ${pledgedDate}`,
+        html: `<p>Names: ${names}</p>
+               <p>Contact Name: ${contactName}</p> 
+               <p>Contact Phone: ${contactPhone}</p> 
+               <p>Contact Email: ${contactEmail}</p> 
+               <p>Number of Single Tickets: ${numberOfTickets}</p> 
+               <p>Total Amount: ${totalAmount}</p> 
+               <p>Whole Table Name: ${wholeTableName}</p> 
+               <p>Total Paid: ${totalPaid}</p>
+               <p>PaidDate: ${paidDate}</p>`,
+    };
     sendMail.send(mail)
     .then(() => {
         res.status(200).json({status: 'Message Sent'});
