@@ -84,7 +84,7 @@ app.post('/bookingform',(req,res)=>{
                <p>Total Amount: ${totalAmount}</p> 
                <p>Whole Table Name: ${wholeTableName}</p> 
                <p>Total Paid: ${totalPaid}</p>
-               <p>PaidDate: ${paidDate}</p>`,
+               <p>Date paid into KĀKĀ Account: ${paidDate}</p>`,
     };
     sendMail.send(mail)
     .then(() => {
