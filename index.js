@@ -75,7 +75,7 @@ app.post('/bookingform',(req,res)=>{
         to: process.env.EMAIL_USER,
         from: process.env.EMAIL_USER,
         subject: `Quiz Booking Form from ${contactName} - Birdwood Reserve Environmental Project`,
-        text: `Names: ${names}\nAddress: ${address}\nPostcode: ${postcode}\nEmail: ${email}\nDonatedAmount: ${donatedAmount}\nDonatedDate: ${donatedDate}\nPledgedAmount: ${pledgedAmount}\nPledgedDate: ${pledgedDate}`,
+        text: `Names: ${names}\nContact Name: ${contactName}\nContact Phone: ${contactPhone}\nContact Email: ${contactEmail}\nNumber of Single Tickets: ${numberOfTickets}\nTotal Amount: ${totalAmount}\nWhole Table Name: ${wholeTableName}\nTotal Paid: ${totalPaid}\nDate Paid into KĀKĀ Account: ${paidDate}`,
         html: `<p>Names: ${names}</p>
                <p>Contact Name: ${contactName}</p> 
                <p>Contact Phone: ${contactPhone}</p> 
