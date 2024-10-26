@@ -22,6 +22,7 @@ app.post('/contact',(req,res)=>{
     const mail = {
         to: process.env.EMAIL_USER,
         from: process.env.EMAIL_USER,
+        // cc: [process.env.SIVA_EMAIL, process.env.DAWN_EMAIL], 
         subject: `Contact Message from ${firstName} ${lastName} - Birdwood Reserve Environmental Project`,
         text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
         html: `<p>Name: ${firstName} ${lastName}</p>
@@ -46,6 +47,7 @@ app.post('/donateform',(req,res)=>{
     const mail = {
         to: process.env.EMAIL_USER,
         from: process.env.EMAIL_USER,
+        // cc: [process.env.SIVA_EMAIL, process.env.DAWN_EMAIL],
         subject: `Donation Form from ${name} - Birdwood Reserve Environmental Project`,
         text: `Name: ${name}\nAddress: ${address}\nPostcode: ${postcode}\nEmail: ${email}\nDonatedAmount: ${donatedAmount}\nDonatedDate: ${donatedDate}\nPledgedAmount: ${pledgedAmount}\nPledgedDate: ${pledgedDate}`,
         html: `<p>Name: ${name}</p>
@@ -74,6 +76,7 @@ app.post('/bookingform',(req,res)=>{
     const mail = {
         to: process.env.EMAIL_USER,
         from: process.env.EMAIL_USER,
+        // cc: [process.env.SIVA_EMAIL, process.env.DAWN_EMAIL],
         subject: `Quiz Booking Form from ${contactName} - Birdwood Reserve Environmental Project`,
         text: `Names: ${names}\nContact Name: ${contactName}\nContact Phone: ${contactPhone}\nContact Email: ${contactEmail}\nNumber of Single Tickets: ${numberOfTickets}\nTotal Amount: ${totalAmount}\nWhole Table Name: ${wholeTableName}\nTotal Paid: ${totalPaid}\nDate Paid into KĀKĀ Account: ${paidDate}`,
         html: `<p>Names: ${names}</p>
